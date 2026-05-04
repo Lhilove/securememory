@@ -76,16 +76,26 @@ func main() {
 	printUsers(readded)
 
 	// this is to find users by their first name or last name
-	names := []string{"Jeff", "Tobi", "John", "Ajala"}
-	for _, name := range names {
-		foundUser, err := findByName(users, name)
-		if err != nil {
-			fmt.Printf("\nUser with name %s not found\n", name)
-		} else {
-			fmt.Printf("\nUser with name %s found: %s %s, Email: %s, Age: %d\n", name, foundUser.firstName, foundUser.lastName, foundUser.email, foundUser.age)
-		}
-	}
+	// names := []string{"Jeff", "Tobi", "John", "Ajala"}
+	// for _, name := range names {
+	// 	foundUser, err := findByName(users, name)
+	// 	if err != nil {
+	// 		fmt.Printf("\nUser with name %s not found\n", name)
+	// 	} else {
+	// 		fmt.Printf("\nUser with name %s found: %s %s, Email: %s, Age: %d\n", name, foundUser.firstName, foundUser.lastName, foundUser.email, foundUser.age)
+	// 	}
+	// }
 
+	// this is to demonstrate user input for name search
+	fmt.Print("Enter name to search: ")
+	var name string
+	fmt.Scan(&name)
+	result, err := findByName(users, name)
+	if err != nil {
+		fmt.Printf("User with name %s not found\n", name)
+	} else {
+		fmt.Printf("User with name %s found: %s %s, Email: %s, Age: %d\n", name, result.firstName, result.lastName, result.email, result.age)
+	}
 }
 
 func createUsers() []user {
@@ -139,17 +149,27 @@ func updateUser(users []user, email string, newEmail string) []user {
 	return readded
 }
 
+// added pointer receiver to updateUser function to modify the original user in the slice instead of creating a new slice with updated email
+func updateUserPointer(users []user, email string, newEmail string) {
+	for i := range users {
+		if users[i].email == email {
+			users[i].email = newEmail
+		}
+	}
+}
+
 // returns the user if found, returns an error if not found
 // caller must check err before using the returned user
 func findByName(users []user, name string) (user, error) {
 	var names []user
 	for _, value := range users {
-		if strings.Contains(value.firstName, name) || strings.Contains(value.lastName, name) {
+		// fix case insensitive name search, prevents auth bypass via case manipulation
+		if strings.EqualFold(value.firstName, name) || strings.EqualFold(value.lastName, name) {
 			names = append(names, value)
 		}
 	}
 	if len(names) == 0 {
 		return user{}, fmt.Errorf("user not found")
 	}
-	return names[0], nil
+	return names[0], nil // return the first user found, you can modify this to return all users found if needed
 }

@@ -1,6 +1,6 @@
 # Simple Data Store - Go Learning Project
 
-This is my first go project, this goal is to put everything i have learnt into a working software. 
+This is my first golang project, the goal is to put everything I have learnt into a working software. 
 
 ## What it does
 - Stores user records using structs.
@@ -9,7 +9,7 @@ This is my first go project, this goal is to put everything i have learnt into a
 - Filters users by email domain and age using string matching.
 - Every logical block became its own funtiion
 - Creates, updates and delete users
-- Find user by name
+- Find user by name (using fmt.Scan(&name))
 
 ## Concepts demonstrated
 - Structs and slices
@@ -18,6 +18,8 @@ This is my first go project, this goal is to put everything i have learnt into a
 - String packages
 - Error handling
 - First class functions, anonymous functions
+- Pointers
+- User Input
 
 ## Part of
 A structured learning path toward building SecureFlow an end-to-end secure fintech microservices platform with real-world SSDLC.
