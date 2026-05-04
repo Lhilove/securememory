@@ -118,6 +118,7 @@ func filter(users []user, fn func(user) bool) []user {
 			filtered = append(filtered, value)
 		}
 	}
+
 	return filtered
 }
 
