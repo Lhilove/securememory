@@ -10,9 +10,6 @@ import (
 const MinEmailLength = 6 // minimum length for a valid email (e.g., a@b.c)
 const AppName = "SecureStore"
 
-var Name string
-var Email string
-
 func CreateUsers() []models.User {
 	users := []models.User{models.User1, models.User2, models.User3}
 	return users

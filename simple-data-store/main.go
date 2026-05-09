@@ -9,6 +9,9 @@ import (
 
 func main() {
 
+	var name string
+	var email string
+
 	fmt.Printf("Welcome to %s!\n", store.AppName)
 	// this is to create users and print them out
 	users := store.CreateUsers()
@@ -38,12 +41,12 @@ func main() {
 
 	// this is to delete user from the store
 	fmt.Println("Enter email to delete: ")
-	fmt.Scan(&store.Email)
-	record, err := store.DeleteUser(users, models.User3, store.Email)
+	fmt.Scan(&email)
+	record, err := store.DeleteUser(users, models.User3, email)
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		fmt.Printf("User with email %s deleted: %s %s, Email: %s, Age: %d\n", store.Email, record.FirstName, record.LastName, record.Email, record.Age)
+		fmt.Printf("User with email %s deleted: %s %s, Email: %s, Age: %d\n", email, record.FirstName, record.LastName, record.Email, record.Age)
 	}
 
 	// this is to update user email
@@ -54,12 +57,12 @@ func main() {
 
 	// this is to demonstrate user input for name search
 	fmt.Println("Enter name to search: ")
-	fmt.Scan(&store.Name)
-	result, err := store.FindByName(users, store.Name)
+	fmt.Scan(&name)
+	result, err := store.FindByName(users, name)
 	if err != nil {
-		fmt.Printf("User with name %s not found\n", store.Name)
+		fmt.Println(err)
 	} else {
-		fmt.Printf("User with name %s found: %s %s, Email: %s, Age: %d\n", store.Name, result.FirstName, result.LastName, result.Email, result.Age)
+		fmt.Printf("User with name %s found: %s %s, Email: %s, Age: %d\n", name, result.FirstName, result.LastName, result.Email, result.Age)
 	}
 
 }
