@@ -13,6 +13,15 @@ This is my first golang project, the goal is to put everything I have learnt int
 - Input validation
 - Renamed to SecureMemory
 - Added minEmailLength in deleteUser
+- Project Structure:
+    securememory/
+    ├── main.go
+    ├── models/
+    │   └── user.go
+    └── store/
+        └── store.go
+
+- Implemented Role Based Access Control; only admin can delete users
 
 ## Concepts demonstrated
 - Structs and slices
@@ -25,8 +34,8 @@ This is my first golang project, the goal is to put everything I have learnt int
 - User Input
 - Logical Operators
 - Package level variables
+- Go packages
 
-## Part of
 ## Part of
 SecureMemory is the first building block of SecureFlow
 an end-to-end secure fintech microservices platform on AWS 
