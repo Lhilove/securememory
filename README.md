@@ -11,6 +11,8 @@ This is my first golang project, the goal is to put everything I have learnt int
 - Creates, updates and delete users
 - Find user by name (using fmt.Scan(&name))
 - Input validation
+- Renamed to SecureMemory
+- Added minEmailLength in deleteUser
 
 ## Concepts demonstrated
 - Structs and slices
@@ -22,6 +24,10 @@ This is my first golang project, the goal is to put everything I have learnt int
 - Pointers
 - User Input
 - Logical Operators
+- Package level variables
 
 ## Part of
-A structured learning path toward building SecureFlow an end-to-end secure fintech microservices platform with real-world SSDLC.
+## Part of
+SecureMemory is the first building block of SecureFlow
+an end-to-end secure fintech microservices platform on AWS 
+with real-world SSDLC.

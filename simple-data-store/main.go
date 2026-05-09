@@ -38,10 +38,15 @@ var user3 = user{
 }
 
 // this variable is for findByName, deleteUser
+const minEmailLength = 6 // minimum length for a valid email (e.g., a@b.c)
+const appName = "SecureStore"
+
 var name string
 var email string
 
 func main() {
+
+	fmt.Printf("Welcome to %s!\n", appName)
 	// this is to create users and print them out
 	users := createUsers()
 	printUsers(users)
@@ -130,7 +135,7 @@ func filter(users []user, fn func(user) bool) []user {
 func deleteUser(users []user, email string) (user, error) {
 
 	//user input validation to prevent auth bypass via email manipulation.
-	isValidEmail := strings.Contains(email, "@")
+	isValidEmail := strings.Contains(email, "@") && len(email) >= minEmailLength
 	if !isValidEmail {
 		return user{}, fmt.Errorf("invalid email format")
 	}
