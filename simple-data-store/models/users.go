@@ -13,7 +13,7 @@ type User struct {
 	LastName  string
 	Email     string
 	Age       int
-	Password  []string
+	Password  []string `json:"-"` // this will hide the password field
 	Role      Role
 }
 
